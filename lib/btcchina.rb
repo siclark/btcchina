@@ -4,7 +4,7 @@ require "uri"
 require 'json'
 
 
-class Kublai
+class BTCChina
 
   def initialize(access='', secret='')
     @access_key = access
@@ -90,7 +90,7 @@ class Kublai
     signiture_string = sign(params_string(payload.clone))
     request = Net::HTTP::Post.new(uri.request_uri)
     request.body = payload.to_json
-    request.initialize_http_header({"Accept-Encoding" => "identity", 'Json-Rpc-Tonce' => post_data['tonce'], 'Authorization' => signiture_string, 'Content-Type' => 'application/json', "User-Agent" => "Kublai"})
+    request.initialize_http_header({"Accept-Encoding" => "identity", 'Json-Rpc-Tonce' => post_data['tonce'], 'Authorization' => signiture_string, 'Content-Type' => 'application/json', "User-Agent" => "Ruby BTCChina Gem"})
     connection(uri, request)
   end
 
